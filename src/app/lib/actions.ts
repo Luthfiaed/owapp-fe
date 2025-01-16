@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers"
 import { API_URL } from "./query"
+import { revalidatePath } from "next/cache"
 
 export interface ILoginForm {
     username: string,
@@ -137,5 +138,54 @@ export async function uploadAvatar(
             message: err.message,
             initial: false
         }
+    }
+}
+
+export interface IReviewForm {
+    productId: string,
+    review: string,
+    success: boolean,
+    message: string
+}
+
+export const submitReview = async (prevState: IReviewForm, formData: FormData) => {
+    let msg = ""
+    let isSuccess = false
+    const resource = "/api/v1/products/review"
+
+    const data = {
+        productId: formData.get("productId") as string,
+        review: formData.get("review") as string
+    }
+
+    const cookieStore = await cookies()
+    const authToken = cookieStore.get("access_token")?.value
+
+    try {
+        const res = await fetch(`${API_URL}${resource}`, {
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+            body: JSON.stringify(data)
+          });
+          const resBody = await res.json()
+          if (res.status >= 400) {
+            throw new Error(resBody.error)
+          }
+          msg = resBody.message
+          isSuccess = true
+    } catch (e) {
+        const err = e as Error
+        msg = err.message
+    }
+
+    revalidatePath(`/products/${data.productId}`)
+
+    return {
+        success: isSuccess,
+        message: msg,
+        review: data.review,
+        productId: data.productId
     }
 }

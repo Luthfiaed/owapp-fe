@@ -17,9 +17,9 @@ const vdata = [
       "There is no secure password requirement such as minimum length, alphanumeric characters, and/or mixed case letters.",
   },
   {
-    title: "Error Message direct dari BE",
+    title: "Direct error message from BE",
     content:
-      "There is no secure password requirement such as minimum length, alphanumeric characters, and/or mixed case letters.",
+      "Explicit error message possibly revealing information that is unnecessary to be disclosed.",
   },
 ];
 

@@ -6,25 +6,25 @@ import ProductCard, { IProduct } from "../ui/product-card";
 import Accordion from "../ui/accordion";
 import { fetchProduct } from "../lib/query";
 import Toast from "../ui/toast";
+import { useCookies } from "react-cookie";
 
 const vdata = [
   {
     title: "SQL Injection",
     content: "Try passing this query to the search bar: test' OR '1'='1",
   },
-  {
-    title: "Stateless Token",
-    content: "Try passing this query to the search bar: '' OR 1=1--",
-  },
 ];
 
-export default function HomePage() {
+export default function ProductsPage() {
   const [productData, setProductData] = useState<IProduct[]>([]);
   const [error, setError] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
+  // eslint-disable-next-line
+  const [authToken, setCookie, removeCookie] = useCookies(["access_token"]);
+
   const getProduct = async (name?: string) => {
-    const res = await fetchProduct(name);
+    const res = await fetchProduct(authToken.access_token, name);
     if (res.error !== "") {
       setError(res.error);
       setProductData([]);
@@ -63,6 +63,7 @@ export default function HomePage() {
         </div>
         <div>
           <h1 className="mb-4 text-center text-xl">Our Products</h1>
+          <p className="mb-4 text-center text-lg">Click for Details</p>
           {error !== "" && (
             <Toast type="error" title="Fetch Product Failed">
               {error}

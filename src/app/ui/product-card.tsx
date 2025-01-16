@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export interface IProduct {
+  id: number;
   name: string;
   price: number;
   draft: boolean;
@@ -12,8 +16,13 @@ export default function ProductCard({
 }: {
   productData: IProduct;
 }) {
+  const router = useRouter();
+
   return (
-    <div className="border-2 p-4">
+    <div
+      onClick={() => router.push(`/products/${productData.id}`)}
+      className="border-2 p-4 bg-[#fff] rounded-md"
+    >
       <Image
         src={productData.image}
         alt={`image of ${productData.name}`}

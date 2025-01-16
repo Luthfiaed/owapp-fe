@@ -41,7 +41,7 @@ export const fetchProfile = async (authToken: string) => {
     }
 }
 
-export const fetchProduct = async (name?: string) => {
+export const fetchProduct = async (authToken: string, name?: string) => {
     let errMsg = ""
     let data: IProduct[] = []
 
@@ -51,8 +51,10 @@ export const fetchProduct = async (name?: string) => {
     }
 
     try {
-        const res = await fetch(`${API_URL}/${resource}`, {
-            cache: 'no-store'
+        const res = await fetch(`${API_URL}${resource}`, {
+            headers: {
+                Authorization: `Bearer ${authToken}`
+            }
         })
         const resBody = await res.json()
         
