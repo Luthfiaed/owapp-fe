@@ -48,6 +48,7 @@ export default function LoginPage() {
           <div className="flex-1 rounded-lg bg-[var(--navbar)] px-6 pb-4 pt-8">
             <h1 className="mb-3 text-2xl">Please log in to continue.</h1>
             {isPending && <p>Loading...</p>}
+            <p className="text-xs">{`You can try logging in with user "minyong" and password "test1234" to play around`}</p>
             {!formState.success && (
               <Toast type="error" title="Login Failed">
                 {formState.message}
