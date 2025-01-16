@@ -20,7 +20,7 @@ const AccordionItem = ({
     <div className="border-b border-gray-200">
       <button
         onClick={onToggle}
-        className="rounded-md w-full flex justify-between items-center px-4 py-2 text-left bg-[var(--navbar)] hover:bg-[var(--background)] focus:outline-none"
+        className="rounded-md w-full flex justify-between items-center px-4 py-2 text-left bg-[var(--accordion)] hover:bg-[var(--accordion-hover)] focus:outline-none"
       >
         <span className="font-medium text-gray-900">{title}</span>
         <ChevronDownIcon
@@ -30,11 +30,11 @@ const AccordionItem = ({
         />
       </button>
       <div
-        className={`overflow-hidden transition-all duration-200 bg-[var(--navbar)] ${
+        className={`overflow-hidden transition-all duration-200 bg-[var(--accordion)] ${
           isOpen ? "max-h-96 py-4" : "max-h-0"
         }`}
       >
-        <div className="px-4 text-[var(--foreground)]">{content}</div>
+        <div className="px-4 text-[var(--accordion-text)]">{content}</div>
       </div>
     </div>
   );

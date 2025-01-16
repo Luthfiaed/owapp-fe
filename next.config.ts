@@ -10,7 +10,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "localhost"
-      }
+      },
+      {
+        protocol: "http",
+        hostname: "ec2-18-139-223-159.ap-southeast-1.compute.amazonaws.com"
+      },
     ]
   }
 };

@@ -21,7 +21,7 @@ export default function ProductCard({
   return (
     <div
       onClick={() => router.push(`/products/${productData.id}`)}
-      className="border-2 p-4 bg-[#fff] rounded-md"
+      className="border-2 p-4 bg-[var(--navbar)] rounded-md"
     >
       <Image
         src={productData.image}

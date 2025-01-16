@@ -47,6 +47,7 @@ export async function authenticate(
 
     } catch (e) {
         const err = e as Error
+        console.log("error login: ", err)
         return {
             username: prevState.username,
             password: prevState.password,
@@ -95,6 +96,7 @@ export async function register(
         }
     } catch (e) {
         const err = e as Error
+        console.log("error register new user: ", err)
         return {
             username: prevState.username,
             password: prevState.password,
@@ -133,6 +135,7 @@ export async function uploadAvatar(
         }
     } catch (e) {
         const err = e as Error
+        console.log("error upload avatar: ", err)
         return {
             success: false,
             message: err.message,
@@ -177,6 +180,7 @@ export const submitReview = async (prevState: IReviewForm, formData: FormData) =
           isSuccess = true
     } catch (e) {
         const err = e as Error
+        console.log("error submit review: ", err)
         msg = err.message
     }
 

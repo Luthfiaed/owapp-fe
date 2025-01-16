@@ -5,14 +5,19 @@
 :root {
   --background: #ededed;
   --foreground: #222222;
-  --navbar: #CFD8DC
+  --navbar: #CFD8DC;
+  --navbar-light: #9aafb7;
+  --accordion: #CFD8DC;
+  --accordion-text: #222222;
+  --accordion-hover: #ededed;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #222222;
     --foreground: #ededed;
-    --navbar: #263238
+    --navbar: #263238;
+    --navbar-light: #374248;
   }
 }
 

@@ -32,6 +32,7 @@ export const fetchProfile = async (authToken: string) => {
         data = resBody
     } catch (e) {
         const err = e as Error
+        console.log("error fetch profile: ", err)
         errMsg = err.message
     }
 
@@ -65,6 +66,7 @@ export const fetchProduct = async (authToken: string, name?: string) => {
         data = resBody
     } catch (e) {
         const err = e as Error
+        console.log("error fetch product: ", err)
         errMsg = err.message
     }
     

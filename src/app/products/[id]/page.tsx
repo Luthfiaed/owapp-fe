@@ -59,7 +59,7 @@ export default async function ProductDetailPage({
   return (
     <main className="justify-items-center pt-12">
       <Accordion items={vdata} />
-      <div className="w-1/2 mt-8 p-8 rounded-lg bg-[#fff]">
+      <div className="w-1/2 mt-8 p-8 rounded-lg bg-[var(--navbar-light)]">
         <h2 className="mb-4 font-bold text-xl">{data.name}</h2>
         <Image
           className="mb-4"
