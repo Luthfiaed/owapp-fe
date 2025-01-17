@@ -30,6 +30,7 @@ export default function RegisterPage() {
     role: "user",
     message: "",
     success: true,
+    isInitial: true,
   };
 
   const [formState, formAction, isPending] = useActionState(
@@ -46,11 +47,12 @@ export default function RegisterPage() {
         <div className="bg-[var(--navbar)] rounded-lg px-6 py-6">
           <h1 className="text-xl">Register New User</h1>
           {isPending && <p>Loading...</p>}
-          {formState.success ? (
+          {!formState.isInitial && formState.success && (
             <Toast type="success" title="Register New User Success">
               {formState.message}
             </Toast>
-          ) : (
+          )}{" "}
+          {!formState.isInitial && !formState.success && (
             <Toast type="error" title="Register New User Failed">
               {formState.message}
             </Toast>

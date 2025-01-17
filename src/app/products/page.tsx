@@ -17,6 +17,7 @@ const vdata = [
 
 export default function ProductsPage() {
   const [productData, setProductData] = useState<IProduct[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -24,6 +25,7 @@ export default function ProductsPage() {
   const [authToken, setCookie, removeCookie] = useCookies(["access_token"]);
 
   const getProduct = async (name?: string) => {
+    setIsLoading(true);
     const res = await fetchProduct(authToken.access_token, name);
     if (res.error !== "") {
       setError(res.error);
@@ -32,6 +34,7 @@ export default function ProductsPage() {
       setError("");
       setProductData(res.data);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -64,6 +67,7 @@ export default function ProductsPage() {
         <div>
           <h1 className="mb-4 text-center text-xl">Our Products</h1>
           <p className="mb-4 text-center text-lg">Click for Details</p>
+          {isLoading && <p>Loading...</p>}
           {error !== "" && (
             <Toast type="error" title="Fetch Product Failed">
               {error}

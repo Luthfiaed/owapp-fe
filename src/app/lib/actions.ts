@@ -64,6 +64,7 @@ export interface IFormState {
     role: string;
     message: string;
     success: boolean;
+    isInitial: boolean;
 }
 
 export async function register(
@@ -92,7 +93,8 @@ export async function register(
             password: temp.password,
             role: temp.role,
             success: true,
-            message: "Success register new user"
+            message: "Success register new user",
+            isInitial: false,
         }
     } catch (e) {
         const err = e as Error
@@ -102,7 +104,8 @@ export async function register(
             password: prevState.password,
             role: prevState.role,
             success: false,
-            message: err.message
+            message: err.message,
+            isInitial: false,
         }
     }
 }

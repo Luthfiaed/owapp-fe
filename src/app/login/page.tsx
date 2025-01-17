@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
@@ -40,7 +41,7 @@ export default function LoginPage() {
 
   return (
     <main className="justify-items-center">
-      <div className="w-1/3 pt-12">
+      <div className="w-1/3 pt-12 mb-4">
         <div className="mb-8">
           <Accordion items={vdata}></Accordion>
         </div>
@@ -104,6 +105,7 @@ export default function LoginPage() {
           </div>
         </form>
       </div>
+      <Link href={"/register"}>Register New User</Link>
     </main>
   );
 }
