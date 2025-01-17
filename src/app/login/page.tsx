@@ -7,6 +7,7 @@ import { AtSymbolIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { authenticate } from "../lib/actions";
 import Accordion from "../ui/accordion";
 import Toast from "../ui/toast";
+import { useCookies } from "react-cookie";
 
 const vdata = [
   {
@@ -20,6 +21,13 @@ const vdata = [
 
 export default function LoginPage() {
   const router = useRouter();
+
+  // eslint-disable-next-line
+  const [authToken, setCookie, removeCookie] = useCookies(["access_token"]);
+  if (authToken.access_token) {
+    router.push("/products");
+  }
+
   const initial = {
     username: "",
     password: "",
