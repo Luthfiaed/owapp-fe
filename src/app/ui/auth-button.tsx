@@ -17,9 +17,14 @@ export default function AuthButton() {
 
   if (cookies.access_token) {
     return (
-      <button suppressHydrationWarning onClick={logoutClient}>
-        Logout
-      </button>
+      <div>
+        <Link href={"/profile"} className="mr-4">
+          My Profile
+        </Link>
+        <button suppressHydrationWarning onClick={logoutClient}>
+          Logout
+        </button>
+      </div>
     );
   }
 

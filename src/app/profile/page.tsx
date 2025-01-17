@@ -61,7 +61,8 @@ export default function ProfilePage() {
           </Toast>
         )}
         <div className="bg-[var(--navbar)] flex-1 rounded-lg px-6 py-8 w-full">
-          <h1 className="text-xl mb-4">Hello, {profileData?.username}!</h1>
+          <h1 className="text-xl mb-2">Hello, {profileData?.username}!</h1>
+          <p className="mb-4">Your role is {profileData?.role}</p>
           <h1 className="text-xl mb-4">Upload Avatar</h1>
           {isPending && <p>Loading...</p>}
           {formState.success && !formState.initial && (
