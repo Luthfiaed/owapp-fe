@@ -7,7 +7,7 @@ export interface IProduct {
   id: number;
   name: string;
   price: number;
-  draft: boolean;
+  isDraft: boolean;
   image: string;
 }
 
@@ -34,7 +34,7 @@ export default function ProductCard({
         <h2>{productData.name}</h2>
         <p>${productData.price}</p>
       </div>
-      {productData.draft && (
+      {productData.isDraft && (
         <p className="bg-red-500 rounded-md text-center">UNPUBLISHED</p>
       )}
     </div>

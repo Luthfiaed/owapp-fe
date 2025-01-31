@@ -11,7 +11,8 @@ import { useCookies } from "react-cookie";
 const vdata = [
   {
     title: "SQL Injection",
-    content: "Try passing this query to the search bar: test' OR '1'='1",
+    content:
+      "Try passing this query to the search bar: test' OR '1'='1. It will display unpublished products on this page. This is because the query is not sanitized on the backend.",
   },
 ];
 
@@ -57,7 +58,7 @@ export default function ProductsPage() {
         <Accordion items={vdata}></Accordion>
         <div className="relative flex w-full">
           <input
-            className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 placeholder:text-gray-500"
+            className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-10 text-sm outline-2 text-gray-500"
             placeholder="Search for product..."
             onChange={handleInput}
             onKeyDown={handleSearch}
