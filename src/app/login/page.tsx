@@ -38,7 +38,7 @@ export default function LoginPage() {
 
   const [formState, formAction, isPending] = useActionState(
     authenticate,
-    initial
+    initial,
   );
 
   useEffect(() => {
@@ -112,8 +112,10 @@ export default function LoginPage() {
             </button>
           </div>
         </form>
+        <div className="text-center mt-2">
+          <Link href={"/register"}>Register New User</Link>
+        </div>
       </div>
-      <Link href={"/register"}>Register New User</Link>
     </main>
   );
 }
